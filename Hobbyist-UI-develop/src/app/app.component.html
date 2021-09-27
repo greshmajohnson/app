@@ -1,0 +1,39 @@
+<div class="application-bg">
+  <mat-toolbar color="primary" class="expanded-toolbar">
+    <span>
+      <button mat-button routerLink="/home">{{ title }}</button>
+      
+      <button mat-button routerLink="/home"><mat-icon>home</mat-icon></button>
+        <!-- <span ><h1 routerlink="/home"></h1> Welcome User!!</h1></span> -->
+      <button *ngIf="isAuthenticated" mat-button routerLink="/create-article">
+        <mat-icon>note_add</mat-icon>Create Article
+      </button>
+      <button *ngIf="isAuthenticated" mat-button routerLink="/admin-panel">
+        <mat-icon>assignment_ind</mat-icon>Admin
+      </button>
+      <button *ngIf="isAuthenticated" mat-button routerLink="/my-articles">
+        <mat-icon>view_agenda</mat-icon>My Articles
+      </button>
+      
+    </span>
+    <div class="button-group" fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="/login" *ngIf="!isAuthenticated">
+        <mat-icon>power_settings_new</mat-icon>
+        Login
+      </button>
+      <div>|</div>
+      <button mat-button routerLink="/sign-up" *ngIf="!isAuthenticated">
+        <mat-icon>note_add</mat-icon>
+        Sign up
+      </button>
+      <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        Logout
+      </button>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <div class="footer">
+    <p>HOBBYIST APPLICATION</p>
+  </div>
+</div>

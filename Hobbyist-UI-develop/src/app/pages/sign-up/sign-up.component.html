@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-content>
+    <b><h1 style="color:blue;border: brown;">If you are an Artist please sign up to display your art</h1>
+    
+    </b>  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Sign up</h2>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error> Please provide a valid email address </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstName"
+          required
+        />
+        <mat-error> First name is required </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastName"
+          required
+        />
+        <mat-error> Last name is required </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <mat-error> Password is required </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-select
+          type="text"
+          placeholder="Role"
+          formControlName="role"
+          required
+        >
+          <mat-option *ngFor="let role of Roles" [value]="role.value">{{
+            role.viewValue
+          }}</mat-option>
+        </mat-select>
+        <mat-error> Role is required </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">
+        Sign up
+      </button>
+    </form>
+    <p *ngIf="userCreated">User has been created!</p>
+  </mat-card-content>
+</mat-card>

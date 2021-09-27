@@ -1,0 +1,47 @@
+<mat-grid-list cols="3" rowHeight="650px">
+  <mat-grid-tile *ngFor="let article of articles" [colspan]="1" [rowspan]="1">
+    <mat-card class="example-card">
+      <!-- <img
+          mat-card-image
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          alt="Article"
+        /> -->
+      <img mat-card-image [src]="article?.image" alt="Article" />
+      <mat-card-content>
+        <mat-card-title>{{ article?.title }}</mat-card-title>
+        <p>
+          {{ article?.description }}
+        </p>
+        <mat-card-subtitle>By {{ article?.owner }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ article?.status }}</mat-card-subtitle>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          *ngIf="showReApprove(article?.status)"
+          mat-raised-button
+          color="primary"
+          (click)="reApproveArticle(article)"
+        >
+          RETRY FOR APPROVAL
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="deleteArticle(article)"
+        >
+          DELETE
+        </button>
+
+        <!-- <button *ngIf="isAuthenticated" mat-button routerLink="/update-article">
+          <mat-icon>note_add</mat-icon>Update Article
+        </button> -->
+        <button
+        mat-stroked-button
+          color="black"
+          >
+          UPDATE
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

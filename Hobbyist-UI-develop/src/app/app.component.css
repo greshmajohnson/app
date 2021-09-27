@@ -1,0 +1,21 @@
+.expanded-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group {
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  min-height: 100px;
+}
+
+.application-bg {
+  background-color: rgb(247, 244, 244);
+}
